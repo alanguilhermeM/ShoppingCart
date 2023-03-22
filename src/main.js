@@ -13,4 +13,16 @@ const lista = async () => {
 
 lista();
 
+const addText = async () => {
+  const text = document.createElement('div');
+  text.innerText = 'Carregando...';
+  text.classList.add('loading');
+  document.body.appendChild(text);
+
+  await fetchProductsList('computador');
+  const loading = document.querySelector('.loading');
+  document.body.removeChild(loading);
+};
+addText();
+
 document.querySelector('.cep-button').addEventListener('click', searchCep);
