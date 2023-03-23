@@ -10,8 +10,5 @@ export const fetchProductsList = (search) => {
   const busca = `https://api.mercadolibre.com/sites/MLB/search?q=${search}`;
   return fetch(busca)
     .then((res) => res.json())
-    .then((data) => data.results)
-    .catch((error) => {
-      throw new Error(error.message);
-    });
+    .then((data) => data.results);
 };
