@@ -1,7 +1,8 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProductsList } from './helpers/fetchFunctions';
+import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import './style.css';
 import { createProductElement } from './helpers/shopFunctions';
+import { saveCartID } from './helpers/cartFunctions';
 
 const addText = async () => {
   try {
