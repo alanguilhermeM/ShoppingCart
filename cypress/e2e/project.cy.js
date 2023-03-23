@@ -141,7 +141,7 @@ describe('Shopping Cart Project', () => {
       cy.stub(global, 'fetch').callsFake(fetchMock);
     });
 
-    it('fetchProduct retorna um erro quando não é passado nenhum parâmetro', (done) => {
+    it.only('fetchProduct retorna um erro quando não é passado nenhum parâmetro', (done) => {
       fetchProduct()
         .then(() => done(new Error('A função não retornou um erro')))
         .catch((err) => {
