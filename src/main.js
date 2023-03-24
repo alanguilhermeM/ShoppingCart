@@ -1,8 +1,8 @@
 import { searchCep } from './helpers/cepFunctions';
 import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import './style.css';
-import { createProductElement } from './helpers/shopFunctions';
-import { saveCartID } from './helpers/cartFunctions';
+import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
+import { getSavedCartIDs } from './helpers/cartFunctions';
 
 const addText = async () => {
   try {
@@ -28,5 +28,26 @@ const addText = async () => {
 };
 
 addText();
+
+// requisito 9
+// criar uma função que utiliza a função getSavedCartIDs, essa função retorna um array de IDs
+// utilizar a função fetchProduct para CADA UM desses ids e recuperar as informações de cada produto(que é o que fetchProduct faz)
+// Utilizar o metodo promisse.all para aguardar a resposta de todas as requisições(as funções acima) e só então add os produtos ao carrinho
+
+const localStor = async () => {
+  const carrinho = document.querySelector('.cart__products');
+  const savedIds = getSavedCartIDs();
+  const mapeando = savedIds.map((id) => fetchProduct(id));
+  const products = await Promise.all(mapeando);
+  products.forEach((product) => {
+    const productElement = createCartProductElement(product);
+    carrinho.appendChild(productElement);
+  });
+  console.log(products);
+};
+
+window.onload = () => {
+  localStor();
+};
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
