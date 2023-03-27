@@ -1,6 +1,14 @@
 import { removeCartID, saveCartID } from './cartFunctions';
 import { fetchProduct } from './fetchFunctions';
 
+let valorTotal = 0;
+
+export const somandoValores = (price) => {
+  valorTotal += price;
+  const valorTotalElement = document.querySelector('.total-price');
+  valorTotalElement.textContent = `${valorTotal.toFixed(2)}`;
+};
+
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
@@ -46,9 +54,12 @@ export const getIdFromProduct = (product) => (
  * @param {Element} li - Elemento do produto a ser removido do carrinho.
  * @param {string} id - ID do produto a ser removido do carrinho.
  */
-const removeCartProduct = (li, id) => {
+const removeCartProduct = (li, id, price) => {
   li.remove();
   removeCartID(id);
+  valorTotal -= price;
+  const valorTotalElement = document.querySelector('.total-price');
+  valorTotalElement.textContent = `${valorTotal.toFixed(2)}`;
 };
 
 /**
@@ -88,7 +99,7 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   );
   li.appendChild(removeButton);
 
-  li.addEventListener('click', () => removeCartProduct(li, id));
+  li.addEventListener('click', () => removeCartProduct(li, id, price));
   return li;
 };
 
@@ -131,6 +142,7 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     const Dados = createCartProductElement(dadosRetornados);
     console.log(dadosRetornados);
     carrinho.appendChild(Dados);
+    somandoValores(price);
   });
 
   return section;
