@@ -1,10 +1,9 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+<h1>Shopping Cart</h1>
+
+<p>Nesse Projeto foi desenvolvido um carrinho de compras totalmente dinâmico! 🛒
+
+Para isso, foi consumido dados diretamente de uma API!
+
+Nesse projeto foi utilizado a API do Mercado Livre para buscar produtos à venda. 🏷
+
+Nesse projeto teve desenvolvimento orientado a testes, o famoso TDD (Test Driven Development)!</p>
